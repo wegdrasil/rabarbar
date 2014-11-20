@@ -48,7 +48,7 @@ function main ()
 	initBuffers();
 
 	gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
-	gl.clearColor(1.0, 1.0, 0.0, 1.0);
+	gl.clearColor(Math.random(), Math.random(), Math.random(), 1.0);
 	gl.clear(gl.COLOR_BUFFER_BIT);
 
 	mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, matrix);
