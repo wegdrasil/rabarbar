@@ -1,4 +1,4 @@
 rabarbar
 ========
 
-2d game in JavaScript with WebGL
+2d game in JavaScript

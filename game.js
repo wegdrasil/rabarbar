@@ -1,6 +1,19 @@
 var game;
 var pokemon = [3];
 var t = 0;
+var move = false;
+var amp = 1;
+
+function movement()
+{
+	move = document.getElementById("anim-chbx").checked; 
+}
+
+function amplitude()
+{
+	amp = parseInt(document.getElementById("anim-rng").value); 
+	console.log(amp);
+}
 
 function main ()
 {
@@ -13,13 +26,13 @@ function preload()
 	game.load.spritesheet("p1", "sprites/sprite1.png", 32, 32);
 	game.load.spritesheet("p2", "sprites/sprite2.png", 32, 32);
 
-	game.stage.setBackgroundColor("#00ffff");
+	game.stage.setBackgroundColor("#8EA86C");
 	game.stage.smoothed = false;
 }
 
 function create()
 {
-	pokemon[0] = game.add.sprite(200, 50, "p0");
+	pokemon[0] = game.add.sprite(200, 200, "p0");
 	pokemon[0].scale.setTo(3, 3);
 	pokemon[0].animations.add("anim0", [ 0, 1, 2, 3 ], 10, true);
 	pokemon[0].animations.play("anim0");
@@ -37,13 +50,17 @@ function create()
 
 function update()
 {
-	t += 0.075;
-	pokemon[0].position.x += 20*Math.sin((2*t) + (Math.PI/2));
-	pokemon[0].position.y += 20*Math.sin((1*t));
+	if(move)
+	{
+		t += 0.075;
 
-	pokemon[1].position.x += 30*Math.sin((2*t) + (Math.PI/2));
-	pokemon[1].position.y += 30*Math.sin((3*t));
+		pokemon[0].position.x += amp*Math.sin((2*t) + (Math.PI/2));
+		pokemon[0].position.y += amp*Math.sin((1*t));
 
-	pokemon[2].position.x += 30*Math.sin((4*t) + (Math.PI/2));
-	pokemon[2].position.y += 30*Math.sin((5*t));
+		pokemon[1].position.x += amp*Math.sin((2*t) + (Math.PI/2));
+		pokemon[1].position.y += amp*Math.sin((3*t));
+
+		pokemon[2].position.x += amp*Math.sin((4*t) + (Math.PI/2));
+		pokemon[2].position.y += amp*Math.sin((5*t));
+	}
 }
